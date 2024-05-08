@@ -1,21 +1,14 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Account Registration Form
-    document.getElementById("registerForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent default form submission
-        
-        // Collect form data
-        var formData = new FormData(this);
-
-        // Send form data to register.php using AJAX
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "register.php", true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                // Display success message or handle response
-                alert(xhr.responseText);
-            }
-        };
-        xhr.send(formData);
+document.addEventListener('DOMContentLoaded', function() {
+    // Activate Session
+    document.getElementById('activateButton').addEventListener('click', function() {
+        var activationCode = document.getElementById('activationCode').value;
+        // Here you can add logic to check the activation code and decide whether to show the URL Fetching Form or not
+        if (activationCode === '123') {
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('urlFormContainer').style.display = 'block';
+        } else {
+            alert('Invalid activation code. Please try again.');
+        }
     });
 
     // URL Fetching Form
@@ -24,8 +17,11 @@ document.addEventListener("DOMContentLoaded", function() {
         var url = document.getElementById('urlInput').value;
         var archiveUrl = 'https://web.archive.org/web/' + url;
 
-        document.getElementById('result').innerHTML = 'Getting Unblocked Version Unblocking...';
+        document.getElementById('result').innerHTML = 'Getting Unblocked Version...';
 
-        document.getElementById('result').innerHTML = '<a href="' + archiveUrl + '" target="_blank">View Archived Page</a>';
+        // Simulating fetching data from an archive URL
+        setTimeout(function() {
+            document.getElementById('result').innerHTML = '<a href="' + archiveUrl + '" target="_blank">View Archived Page</a>';
+        }, 2000); // Simulating a delay for demonstration purposes (2 seconds)
     });
 });
