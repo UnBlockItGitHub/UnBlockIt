@@ -73,8 +73,9 @@
 
             if (enteredKey === activationKey) {
                 if (url) {
-                    var archiveUrl = 'https://web.archive.org/' + url;
-                    window.location.href = archiveUrl;
+                    // Replace 'https://example.com' with your desired website URL
+                    var newUrl = 'https://example.com/' + url;
+                    window.location.href = newUrl;
                 } else {
                     alert('Please enter a URL');
                 }
