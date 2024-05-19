@@ -30,12 +30,51 @@
             font-size: 1.2em;
             color: #666;
         }
+        .input-group {
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Welcome to UnBlockIt</h1>
         <p>Your go-to solution for unblocking restricted content.</p>
+        <div class="input-group">
+            <input type="text" id="urlInput" placeholder="Enter URL to unblock">
+            <button onclick="unblockUrl()">Unblock It</button>
+        </div>
     </div>
+
+    <script>
+        function unblockUrl() {
+            var url = document.getElementById('urlInput').value;
+            if (url) {
+                var archiveUrl = 'https://web.archive.org/' + url;
+                window.location.href = archiveUrl;
+            } else {
+                alert('Please enter a URL');
+            }
+        }
+    </script>
 </body>
 </html>
